@@ -1,0 +1,56 @@
+﻿
+
+
+Concrete -> Bizim somut ifadelerimizi tutar. Soyut ifadeleri abstractlarda tutarız
+
+
+KATMANLAR KENDİ İÇERİSİNDE REFERANSLARA AYRILACAKLAR
+
+Entity Layer'dan Data Access'e referans vereceksin. Böylece Data Acces, Entity Layerin bütün öğelerini kullanacak
+
+Business Layer hem Entity Layer'den hemde Data Acces'tan referans alacak. Böylece 2 layerinda öğelerini kullanacak
+
+Presentetion(UI) Layer hem Entity, hem Data Acces Layeri, hem Business layerdan referans alacak. Böylece her 3 katmanında özelliğini alacak
+
+//
+
+Packet Manager Console'da DB oluşturulurken Context Sınıfın nerdeyse "Default Project'e" ora seçili olması lazım. Bu projede context sınıfı DAL'da olduğu
+için onu seçiyoruz...
+
+/ DB OLUŞTURURKEN;
+
+		* add-migration  mig1
+		* update-database
+	
+	DB'de olaşacak migration DAL'ı seçtiğimiz için onun içinde oluşuyor.
+
+
+
+Klasörleri 2 ye ayıracağız..
+	
+		
+		* ABSTRACT: Bizim interface'lerimizi tutacak..
+			
+			**İnterfaceler: Birer imza olarak tutulacak. Sınıf içine metod tanımlayacağız ama bu metodu hazırlamadan önce o metodun imzasını hazırlayacağız
+			** Her bir sınıfımız için ekleme-gğncelleme-silmne-listeleme metodlarını ABSTRACT klasörümüzde tanımladık 
+
+		*CONCRETE: Bizim sınıflarımızı tutacak
+
+
+
+REPOSiTORiES: -> Geliştirme yapacağımız tasarım mimarisinin adı olan "Repository Design Pattern" üzerinden geliştirme yapacağız.
+	** Bu Design Patternın olayı şöyle oluyor:
+			
+				** Bir yerde metodları tanımlıyoruz. Sonra o tanımlamış olduğumuz metodları repository içinde çağırıp içlerini doldurarak ilerliyoruz
+
+
+			** "public class ProductDal:IProductDal" yazdığımızda hata veriyor.Diyor ki sen IProductDal'ı kullanmak istiyorsan o zaman metodları implemente 
+				etmen gerekiyor diyor
+
+
+
+Interfacedeki ABSTRACT ifadeleri SERViCE(IGenericService) Concrete ifadeleri Manager(IGenericManager) olarak tanımlanır
+
+CONSTRUCTOR: Entity Frameworktaki yada DAL'daki değerlere erişim sağlamam gerekiyor. Bunun üzerinden işlem yapmam gerekiyor. Bunu yapmak için;
+			
+			**bulunduğu sınıfla aynı isimde metod tanımlıyoruz.
