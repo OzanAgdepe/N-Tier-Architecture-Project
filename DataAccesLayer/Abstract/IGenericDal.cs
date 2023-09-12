@@ -14,5 +14,7 @@ namespace DataAccesLayer.Abstract
         List<T> GetList();
 
         T GetById(int id);   //ID'e göre getir anlamını taşıyan bir metod tanımladık. Dışardan İd parametresi alacak
+
+        
     }
 }

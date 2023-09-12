@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccesLayer.Abstract
+namespace BusinessLayer.Absctact
 {
-    public interface ICustomerDal:IGenericDal<Customer>
+    public interface IJobService:IGenericService<Job>
     {
-
-        List<Customer> GetCustomerListWithJob();
 
     }
 }

@@ -8,12 +8,15 @@
 
     @Html.Label("ürün Adı")
     @Html.TextBoxFor(x => x.Name, new { @class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.Name)
     <br />
     @Html.Label("ürün Fiyatı")
     @Html.TextBoxFor(x => x.Price, new { @class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.Price)
     <br />
     @Html.Label("ürün Stok Sayısı")
     @Html.TextBoxFor(x => x.Stock, new { @class = "form-control"})
+    @Html.ValidationMessageFor(x=>x.Stock)
     <br />
  <button class="btn btn-primary">Ürün Ekle</button>
      </form>
